@@ -13,7 +13,8 @@ df["date"] = pd.to_datetime(df.arrival_date_day_of_month.astype(str) + "-"  + df
 df.index = df["date"]
 
 #%%
-df = df.drop(["country", "date"], axis = 1)
+df = df.drop(["date"], axis = 1)
+df.country.fillna("PRT")
 df.children = df["children"].fillna(0)
 missing_cols = ["company", "agent"]
 for i in missing_cols:
